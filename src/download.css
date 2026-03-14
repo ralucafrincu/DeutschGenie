@@ -1,0 +1,71 @@
+:root {
+  font-family: "Cabin", sans-serif;
+  color: #332c7a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(248, 219, 255, 0.7), transparent 28%),
+    linear-gradient(180deg, #dbe5f2 0%, #e9e5f8 50%, #d8e1f1 100%);
+}
+
+.download-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+}
+
+.download-card {
+  width: min(680px, 100%);
+  padding: 48px 40px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 32px;
+  box-shadow: 0 20px 48px rgba(73, 62, 124, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7a72b8;
+}
+
+h1 {
+  margin: 0 0 18px;
+  font-family: "Baloo 2", cursive;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1;
+}
+
+.message {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.55;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 28px;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #332c7a;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(255, 255, 255, 0.75);
+}
