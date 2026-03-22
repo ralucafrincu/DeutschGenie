@@ -1,5 +1,5 @@
 import React from "react";
-import avatar from "./assets/avatar.svg";
+import avatar from "./assets/new-avatar.png";
 import topLogo from "./assets/top-logo.svg";
 import convoIcon from "./assets/convo-icon.svg";
 import learningIcon from "./assets/learning-icon.svg";
@@ -67,7 +67,13 @@ function Logo() {
 function FeatureCard({ icon, title, text }) {
   return (
     <article className="feature-card">
-      <img className="feature-icon" src={icon} alt="" aria-hidden="true" />
+      <img
+        className="feature-icon"
+        src={icon}
+        alt={`${title} icon`}
+        loading="lazy"
+        decoding="async"
+      />
       <h3>{title}</h3>
       <p>{text}</p>
     </article>
@@ -76,9 +82,18 @@ function FeatureCard({ icon, title, text }) {
 
 function ChatPhone({ variant }) {
   const screens = {
-    one: phoneScreen1,
-    two: phoneScreen2,
-    three: phoneScreen3,
+    one: {
+      src: phoneScreen1,
+      alt: "Phone screen showing a German conversation lesson inside the app",
+    },
+    two: {
+      src: phoneScreen2,
+      alt: "Phone screen showing personalised German learning exercises inside the app",
+    },
+    three: {
+      src: phoneScreen3,
+      alt: "Phone screen showing a fun German vocabulary activity inside the app",
+    },
   };
 
   return (
@@ -87,9 +102,10 @@ function ChatPhone({ variant }) {
       <div className="phone-screen">
         <img
           className="phone-screen-image"
-          src={screens[variant]}
-          alt=""
-          aria-hidden="true"
+          src={screens[variant].src}
+          alt={screens[variant].alt}
+          loading="lazy"
+          decoding="async"
         />
       </div>
     </div>
@@ -99,22 +115,27 @@ function ChatPhone({ variant }) {
 function App() {
   return (
     <div className="page-shell" id="top">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
+
       <header className="topbar">
         <Logo />
-        <nav className="nav-links">
-          <a href="#contact">Contact</a>
-          <a href="#about">About</a>
+        <nav className="nav-links" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#practice">How it works</a>
+          <a href="#testimonials">Reviews</a>
         </nav>
         <a className="pill-button pill-button-light" href="/download.html">
           Download the app
         </a>
       </header>
 
-      <main>
-        <section className="hero">
+      <main id="main-content">
+        <section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <h1>Learn German online by Chatting with an AI Virtual Teacher</h1>
-            <div className="scribble" />
+            <h1 id="hero-title">Learn German online by Chatting with an AI Virtual Teacher</h1>
+            <div className="scribble" aria-hidden="true" />
             <p>
               Practice real German conversations online through text, complete fun
               vocabulary exercises, and improve your grammar step by step in an
@@ -125,25 +146,28 @@ function App() {
             </a>
           </div>
 
-          <div className="hero-visual">
+          <figure className="hero-visual">
             <img
               className="teacher-avatar"
               src={avatar}
-              alt="DeutschGenie virtual teacher"
+              alt="Illustration of the DeutschGenie AI virtual German teacher"
+              decoding="async"
             />
-          </div>
+          </figure>
         </section>
 
-        <section className="section section-soft" id="features">
-          <h2>Improve your german today</h2>
+        <section className="section section-soft" id="features" aria-labelledby="features-title">
+          <h2 id="features-title">Improve your german today</h2>
           <p className="section-lead">
             Learn German online with interactive AI chat and exercises. Practice
             German through engaging text-based conversations and build confidence
             every day.
           </p>
-          <div className="feature-grid">
+          <div className="feature-grid" role="list">
             {features.map((feature) => (
-              <FeatureCard key={feature.title} {...feature} />
+              <div key={feature.title} role="listitem">
+                <FeatureCard {...feature} />
+              </div>
             ))}
           </div>
           <a className="pill-button pill-button-green" href="/download.html">
@@ -151,35 +175,38 @@ function App() {
           </a>
         </section>
 
-        <section className="section" id="practice">
-          <h2>Why our app works</h2>
-          <div className="scribble scribble-center" />
+        <section className="section" id="practice" aria-labelledby="practice-title">
+          <h2 id="practice-title">Why our app works</h2>
+          <div className="scribble scribble-center" aria-hidden="true" />
           <div className="comparison-headings">
             <span>Your problems...</span>
             <span>Our solution</span>
           </div>
 
-          <div className="comparison-grid">
+          <div className="comparison-grid" role="list">
             {struggles.map((row, index) => (
-              <div className="comparison-row" key={row.left}>
+              <article className="comparison-row" key={row.left} role="listitem">
                 <div className="problem-box">{row.left}</div>
                 <ChatPhone variant={index === 0 ? "one" : index === 1 ? "two" : "three"} />
                 <div className="solution-box">{row.right}</div>
-              </div>
+              </article>
             ))}
           </div>
         </section>
 
-        <section className="section testimonials">
-          <h2>What do our users say?</h2>
+        <section className="section testimonials" id="testimonials" aria-labelledby="testimonials-title">
+          <h2 id="testimonials-title">What do our users say?</h2>
           <p className="section-lead">
             Some reviews from people who learned German with our app
           </p>
-          <div className="review-grid">
+          <div className="review-grid" role="list">
             {reviews.map((review) => (
-              <article className="review-card" key={review.name}>
+              <article className="review-card" key={review.name} role="listitem">
                 <h3>{review.name}</h3>
-                <p>{review.text}</p>
+                <blockquote>
+                  <p>{review.text}</p>
+                </blockquote>
+                <cite>{review.name}</cite>
               </article>
             ))}
           </div>
@@ -206,6 +233,7 @@ function App() {
           <a href="#top">Home</a>
           <a href="#features">Features</a>
           <a href="#practice">How it works</a>
+          <a href="#testimonials">Reviews</a>
           <a href="/download.html">Download the app</a>
         </nav>
 
