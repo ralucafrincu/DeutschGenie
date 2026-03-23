@@ -126,7 +126,7 @@ function App() {
           <a href="#practice">How it works</a>
           <a href="#testimonials">Reviews</a>
         </nav>
-        <a className="pill-button pill-button-light" href="/download.html">
+        <a className="pill-button pill-button-light" href="download.html">
           Download the app
         </a>
       </header>
@@ -141,7 +141,7 @@ function App() {
               vocabulary exercises, and improve your grammar step by step in an
               engaging way.
             </p>
-            <a className="pill-button pill-button-green pill-button-hero" href="/download.html">
+            <a className="pill-button pill-button-green pill-button-hero" href="download.html">
               Start learning german
             </a>
           </div>
@@ -170,7 +170,7 @@ function App() {
               </div>
             ))}
           </div>
-          <a className="pill-button pill-button-green" href="/download.html">
+          <a className="pill-button pill-button-green" href="download.html">
             Practice german now
           </a>
         </section>
@@ -202,15 +202,14 @@ function App() {
           <div className="review-grid" role="list">
             {reviews.map((review) => (
               <article className="review-card" key={review.name} role="listitem">
-                <h3>{review.name}</h3>
+                <cite className="review-name">{review.name}</cite>
                 <blockquote>
                   <p>{review.text}</p>
                 </blockquote>
-                <cite>{review.name}</cite>
               </article>
             ))}
           </div>
-          <a id="download" className="pill-button pill-button-green" href="/download.html">
+          <a id="download" className="pill-button pill-button-green" href="download.html">
             Download the app
           </a>
         </section>
@@ -223,7 +222,7 @@ function App() {
             Learn German online with AI-guided conversations, practical exercises,
             and a supportive virtual teacher.
           </p>
-          <a className="footer-cta" href="/download.html">
+          <a className="footer-cta" href="download.html">
             Download DeutschGenie
           </a>
         </div>
@@ -234,7 +233,7 @@ function App() {
           <a href="#features">Features</a>
           <a href="#practice">How it works</a>
           <a href="#testimonials">Reviews</a>
-          <a href="/download.html">Download the app</a>
+          <a href="download.html">Download the app</a>
         </nav>
 
         <div className="footer-column footer-meta" id="about">

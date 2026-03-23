@@ -140,7 +140,7 @@ main {
 .hero-copy h1,
 .section h2,
 .feature-card h3,
-.review-card h3,
+.review-name,
 .comparison-headings span {
   font-family: "Baloo 2", cursive;
 }
@@ -248,10 +248,15 @@ main {
 }
 
 .feature-card h3,
-.review-card h3 {
+.review-name {
   margin: 8px 0;
   font-size: 2rem;
   line-height: 1;
+}
+
+.review-name {
+  display: block;
+  font-style: normal;
 }
 
 .feature-card h3 {
@@ -366,9 +371,6 @@ main {
 }
 
 .review-card cite {
-  display: block;
-  margin-top: 14px;
-  font-style: normal;
   font-weight: 700;
   color: rgba(51, 44, 122, 0.78);
 }
